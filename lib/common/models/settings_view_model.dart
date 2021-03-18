@@ -6,13 +6,10 @@ class SettingsViewModel extends ChangeNotifier {
   double _cardShowFaceUpDurationInMilliseconds;
   final SettingsService settingsService;
 
-  SettingsViewModel(
-      {bool isFullScreen,
-      double cardShowFaceUpDurationInMilliseconds,
-      this.settingsService}) {
-    this.isFullScreen = isFullScreen;
+  SettingsViewModel({this.settingsService}) {
+    this.isFullScreen = SettingsService.IS_FULL_SCREEN_DEFAULT;
     this.cardShowFaceUpDurationInMilliseconds =
-        cardShowFaceUpDurationInMilliseconds;
+        SettingsService.CARD_SHOW_FACE_UP_DURATION_IN_MILLISECONDS_DEFAULT;
     _initModel();
   }
 

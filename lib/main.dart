@@ -11,8 +11,6 @@ void main() {
       providers: [
         ChangeNotifierProvider(
           create: (context) => SettingsViewModel(
-            isFullScreen: false,
-            cardShowFaceUpDurationInMilliseconds: 1000,
             settingsService: SettingsService(),
           ),
         ),
