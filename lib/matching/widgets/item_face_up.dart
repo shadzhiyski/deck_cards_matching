@@ -30,7 +30,6 @@ class ItemFaceUp extends StatelessWidget {
                               ? Theme.of(context).textTheme.headline3
                               : Theme.of(context).textTheme.headline4)
                           .copyWith(
-                        fontSize: 30,
                         color: model.state == ItemState.Matched
                             ? Colors.green
                             : Colors.black,
@@ -40,7 +39,7 @@ class ItemFaceUp extends StatelessWidget {
                 ),
               ),
               Expanded(
-                flex: 0,
+                flex: 1,
                 child: Image(
                   image: AssetImage(
                     'assets/${model.info.type}.png',
