@@ -32,7 +32,7 @@ class GameViewModel with ChangeNotifier {
   }
 
   void _fillItems() {
-    var uniqueItemsCount = _difficulty == Difficulty.Easy ? 10 : 20;
+    var uniqueItemsCount = _difficulty == Difficulty.Easy ? 8 : 16;
     _items = itemsService
         .getRandomItems(uniqueItemsCount)
         .map((info) => ItemViewModel(info: info))

@@ -19,21 +19,28 @@ class ItemFaceUp extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               Expanded(
-                child: Text(
-                  '${model.info.name}',
-                  style: (MediaQuery.of(context).orientation ==
-                              Orientation.landscape
-                          ? Theme.of(context).textTheme.headline3
-                          : Theme.of(context).textTheme.headline4)
-                      .copyWith(
-                    color: model.state == ItemState.Matched
-                        ? Colors.green
-                        : Colors.black,
-                  ),
+                flex: 1,
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text(
+                      '${model.info.name}',
+                      style: (MediaQuery.of(context).orientation ==
+                                  Orientation.landscape
+                              ? Theme.of(context).textTheme.headline3
+                              : Theme.of(context).textTheme.headline4)
+                          .copyWith(
+                        fontSize: 30,
+                        color: model.state == ItemState.Matched
+                            ? Colors.green
+                            : Colors.black,
+                      ),
+                    ),
+                  ],
                 ),
               ),
               Expanded(
-                flex: 1,
+                flex: 0,
                 child: Image(
                   image: AssetImage(
                     'assets/${model.info.type}.png',

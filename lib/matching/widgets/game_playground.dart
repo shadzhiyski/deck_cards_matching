@@ -19,13 +19,13 @@ class GamePlayground extends StatelessWidget {
       child: OrientationBuilder(
         builder: (context, orientation) => GridView.count(
           primary: false,
-          padding: const EdgeInsets.all(20),
+          padding: const EdgeInsets.all(8),
           crossAxisSpacing: 10,
           mainAxisSpacing: 10,
           crossAxisCount:
               MediaQuery.of(context).orientation == Orientation.landscape
                   ? 8
-                  : 5,
+                  : 4,
           children: gameModel.items
               .map<Widget>(
                 (itemModel) => Item(
