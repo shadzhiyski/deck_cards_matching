@@ -39,27 +39,39 @@ class GamePage extends StatelessWidget {
               GamePlayground(
                 gameModel: model,
               ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Padding(
-                    padding: EdgeInsets.only(right: 8),
-                    child: ElevatedButton(
-                      onPressed: () => Navigator.of(context).pop(),
+              Container(
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Padding(
+                      padding: EdgeInsets.only(right: 8),
+                      child: ElevatedButton(
+                        onPressed: () => Navigator.of(context).pop(),
+                        clipBehavior: Clip.none,
+                        autofocus: true,
+                        child: Text('Exit'.toUpperCase()),
+                      ),
+                    ),
+                    ElevatedButton(
+                      onPressed: model.state == GameState.Finished
+                          ? () => model.refresh()
+                          : null,
                       clipBehavior: Clip.none,
                       autofocus: true,
-                      child: Text('Exit'.toUpperCase()),
+                      child: Text('New Game'.toUpperCase()),
                     ),
-                  ),
-                  ElevatedButton(
-                    onPressed: model.state == GameState.Finished
-                        ? () => model.refresh()
-                        : null,
-                    clipBehavior: Clip.none,
-                    autofocus: true,
-                    child: Text('New Game'.toUpperCase()),
-                  ),
-                ],
+                  ],
+                ),
+                decoration: BoxDecoration(
+                  color: Colors.white,
+                  boxShadow: [
+                    BoxShadow(
+                      color: Colors.grey,
+                      offset: Offset(0.0, 0.0),
+                      blurRadius: 6.0,
+                    ),
+                  ],
+                ),
               ),
             ],
           ),
