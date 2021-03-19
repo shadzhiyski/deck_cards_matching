@@ -1,12 +1,15 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
+import 'difficulty_selector.dart';
+
 class GamePageView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
+        DifficultySelector(),
         ElevatedButton(
           onPressed: () => Navigator.of(context).pushNamed('/game'),
           clipBehavior: Clip.none,

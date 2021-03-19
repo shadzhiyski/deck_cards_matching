@@ -4,6 +4,8 @@ import 'package:provider/provider.dart';
 import 'app.dart';
 import 'common/models/settings_view_model.dart';
 import 'common/services/settings_service.dart';
+import 'matching/models/difficulty_view_model.dart';
+import 'matching/models/game_view_model.dart';
 
 void main() {
   runApp(
@@ -12,6 +14,11 @@ void main() {
         ChangeNotifierProvider(
           create: (context) => SettingsViewModel(
             settingsService: SettingsService(),
+          ),
+        ),
+        ChangeNotifierProvider(
+          create: (context) => DifficultyViewModel(
+            difficulty: Difficulty.Easy,
           ),
         ),
       ],

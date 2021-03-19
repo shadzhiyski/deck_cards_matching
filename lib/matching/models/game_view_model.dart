@@ -4,33 +4,49 @@ import 'package:flutter/material.dart';
 import 'item_view_model.dart';
 
 enum GameState {
+  Created,
   Started,
   Finished,
 }
 
+enum Difficulty {
+  Easy,
+  Hard,
+}
+
 class GameViewModel with ChangeNotifier {
-  final ItemsService imageService;
+  final ItemsService itemsService;
   List<ItemViewModel> _items;
 
   GameState _state;
+  Difficulty _difficulty;
 
-  GameViewModel({this.imageService}) {
-    _initModel();
+  GameViewModel({this.itemsService, Difficulty difficulty}) {
+    _initModel(difficulty);
   }
 
-  void _initModel() {
-    state = GameState.Started;
+  void _initModel(Difficulty difficulty) {
+    this.difficulty = difficulty;
+    this.state = GameState.Created;
     _fillItems();
   }
 
   void _fillItems() {
-    _items = imageService
-        .getRandomItems(20)
+    var uniqueItemsCount = _difficulty == Difficulty.Easy ? 10 : 20;
+    _items = itemsService
+        .getRandomItems(uniqueItemsCount)
         .map((info) => ItemViewModel(info: info))
         .toList();
   }
 
   List<ItemViewModel> get items => _items;
+
+  Difficulty get difficulty => _difficulty;
+  set difficulty(Difficulty value) {
+    _difficulty = value;
+
+    notifyListeners();
+  }
 
   List<ItemViewModel> get selectedItems =>
       items.where((item) => item.state == ItemState.FaceUp).toList();
@@ -65,9 +81,14 @@ class GameViewModel with ChangeNotifier {
       .where((item) => item.state != ItemState.Matched)
       .forEach((item) => item.isLocked = areLocked);
 
-  refresh() {
+  void refresh() {
     _fillItems();
     setActiveItemsLocking(false);
     state = GameState.Started;
+  }
+
+  void startGame() {
+    this.state = GameState.Started;
+    _fillItems();
   }
 }

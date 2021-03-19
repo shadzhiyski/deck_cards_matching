@@ -1,3 +1,4 @@
+import 'package:deck_cards_matching/matching/models/difficulty_view_model.dart';
 import 'package:deck_cards_matching/matching/models/game_view_model.dart';
 import 'package:deck_cards_matching/matching/services/items_service.dart';
 import 'package:deck_cards_matching/matching/widgets/game_playground.dart';
@@ -13,9 +14,14 @@ class GamePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: ChangeNotifierProvider<GameViewModel>(
-        create: (BuildContext context) => GameViewModel(
-          imageService: imageService,
-        ),
+        create: (BuildContext context) {
+          var difficultyModel =
+              Provider.of<DifficultyViewModel>(context, listen: false);
+          return GameViewModel(
+            itemsService: imageService,
+            difficulty: difficultyModel.difficulty,
+          );
+        },
         builder: (context, widget) => widget,
         child: Consumer<GameViewModel>(
           builder: (context, model, _) => Column(
