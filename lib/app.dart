@@ -34,7 +34,7 @@ class _MyAppState extends State<MyApp> {
         },
         '/game': (context) {
           return GamePage(
-            imageService: ItemsService(random: Random()),
+            itemsService: ItemsService(random: Random()),
           );
         },
       },

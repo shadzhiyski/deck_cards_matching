@@ -6,9 +6,9 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 class GamePage extends StatelessWidget {
-  final ItemsService imageService;
+  final ItemsService itemsService;
 
-  const GamePage({this.imageService});
+  const GamePage({this.itemsService});
 
   @override
   Widget build(BuildContext context) {
@@ -18,7 +18,7 @@ class GamePage extends StatelessWidget {
           var difficultyModel =
               Provider.of<DifficultyViewModel>(context, listen: false);
           return GameViewModel(
-            itemsService: imageService,
+            itemsService: itemsService,
             difficulty: difficultyModel.difficulty,
           );
         },
