@@ -1,3 +1,4 @@
+import 'package:deck_cards_matching/common/widgets/banner_ad.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -24,6 +25,7 @@ class GamePageView extends StatelessWidget {
             ),
           ),
         ),
+        BannerAdWidget(),
       ],
     );
   }
